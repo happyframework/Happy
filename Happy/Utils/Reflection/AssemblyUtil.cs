@@ -22,9 +22,26 @@ namespace Happy.Utils.Reflection
             Check.MustNotNull(assembly, "assembly");
 
             return assembly.GetConcreteDescendentTypes<TBaseType>()
-                    .Where(type => !type.IsGenericType)
-                    .Select(type => type.CreateInstance<TBaseType>())
-                    .ToList();
+                           .Where(type => !type.IsGenericType)
+                           .Select(type => type.CreateInstance<TBaseType>())
+                           .ToList();
+        }
+
+        /// <summary>
+        /// 创建<paramref name="assembly"/>中所有实现或继承了
+        /// <paramref name="baseType"/>的具体类型的实例。
+        /// </summary>
+        public static IEnumerable<object> CreateConcreteDescendentInstances(
+                                                                this Assembly assembly,
+                                                                Type baseType)
+        {
+            Check.MustNotNull(assembly, "assembly");
+            Check.MustNotNull(baseType, "baseType");
+
+            return assembly.GetConcreteDescendentTypes(baseType)
+                           .Where(type => !type.IsGenericType)
+                           .Select(type => type.CreateInstance())
+                           .ToList();
         }
 
         /// <summary>
@@ -43,19 +60,14 @@ namespace Happy.Utils.Reflection
         /// 返回<paramref name="assembly"/>中所有实现或继承了<paramref name="baseType"/>的具
         /// 体类型。
         /// </summary>
-        public static IEnumerable<Type> GetConcreteDescendentTypes(
-                                                                this Assembly assembly,
-                                                                Type baseType)
+        public static IEnumerable<Type> GetConcreteDescendentTypes(this Assembly assembly,
+                                                                   Type baseType)
         {
             Check.MustNotNull(assembly, "assembly");
             Check.MustNotNull(baseType, "baseType");
 
-            return assembly
-                    .GetTypes()
-                    .Where(type =>
-                        baseType.IsAssignableFrom(type)
-                        && type.IsConcreteType()
-                    );
+            return assembly.GetTypes().Where(type => baseType.IsAssignableFrom(type)
+                                                     && type.IsConcreteType());
         }
     }
 }

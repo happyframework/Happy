@@ -52,6 +52,7 @@
     <Compile Include="Utils\Reflection\AssemblyUtil.cs" />
     <Compile Include="Utils\Reflection\AttributeUtil.cs" />
     <Compile Include="Utils\Reflection\TypeUtil.cs" />
+    <Compile Include="Utils\AppDomainUtil.cs" />
     <Compile Include="Utils\StringUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource\Messages.Designer.cs">

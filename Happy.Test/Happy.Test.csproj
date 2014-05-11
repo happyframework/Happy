@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\AppDomainUtilTest.cs" />
     <Compile Include="Utils\Linq\Expressions\ExpressionUtilTest.cs" />
     <Compile Include="Utils\Reflection\AssemblyUtilTest.cs" />
     <Compile Include="Utils\Reflection\AttributeUtilTest.cs" />
@@ -62,6 +63,9 @@
     <Compile Include="Utils\StringUtilTest.cs" />
     <Compile Include="Utils\ObjectUtilTest.cs" />
     <Compile Include="Utils\Collections\Generic\EnumerableUtilTest.cs" />
+    <Compile Include="Utils\Stub\AppDomainUtils\ITestInterface.cs" />
+    <Compile Include="Utils\Stub\AppDomainUtils\TestImplemention1.cs" />
+    <Compile Include="Utils\Stub\AppDomainUtils\TestImplemention2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

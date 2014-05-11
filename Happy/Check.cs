@@ -19,69 +19,116 @@ namespace Happy
     public static class Check
     {
         /// <summary>
-        /// 参数名或变量名为<paramref name="variableName"/>的字符串的值（<paramref name="directory"/>）对应的路径必须存在。
+        /// 参数名或变量名为<paramref name="variableName"/>的字符串的值（
+        /// <paramref name="directory"/>）对应的路径必须存在。
         /// </summary>
+        /// <exception cref="CheckException"></exception>
         public static void DirectoryMustExist(string directory, string variableName)
         {
-            Require(Directory.Exists(directory), string.Format(Resource.Messages.Error_TheCorrespondingDirectoryMustExist, variableName, directory));
+            var message = string.Format(
+                                        Resource.Messages.Error_DirectoryMustExistxist,
+                                        variableName, directory);
+            Require(Directory.Exists(directory), message);
         }
 
         /// <summary>
-        /// 参数名或变量名为<paramref name="variableName"/>的字符串的值（<paramref name="str"/>）不能是空引用且不能是空白字符串。
+        /// 参数名或变量名为<paramref name="variableName"/>的值（<paramref name="str"/>）
+        /// 必须是类型<paramref name="T"/>。
         /// </summary>
+        /// <exception cref="CheckException"></exception>
+        public static void MustIsType<T>(object obj, string variableName)
+        {
+            var message = string.Format(
+                                    Resource.Messages.Error_MustIsType,
+                                    variableName, typeof(T));
+            Require(obj is T, message);
+        }
+
+        /// <summary>
+        /// 参数名或变量名为<paramref name="variableName"/>的字符串的值（
+        /// <paramref name="str"/>）不能是空引用且不能是空白字符串。
+        /// </summary>
+        /// <exception cref="CheckException"></exception>
         public static void MustNotNullAndNotWhiteSpace(string str, string variableName)
         {
-            Require(!string.IsNullOrWhiteSpace(str), string.Format(Resource.Messages.Error_MustNotNullAndNotWhiteSpace, variableName));
+            var message = string.Format(
+                                    Resource.Messages.Error_MustNotNullAndNotWhiteSpace,
+                                    variableName);
+            Require(!string.IsNullOrWhiteSpace(str), message);
         }
 
         /// <summary>
-        /// 参数名或变量名为<paramref name="variableName"/>的集合的值（<paramref name="collection"/>）必须包含元素。
+        /// 参数名或变量名为<paramref name="variableName"/>的集合的值（
+        /// <paramref name="collection"/>）必须包含元素。
         /// </summary>
-        public static void MustNotEmpty<T>(IEnumerable<T> collection, string variableName)
+        /// <exception cref="CheckException"></exception>
+        public static void MustNotEmpty<T>(IEnumerable<T> collection,
+                                           string variableName)
         {
             MustNotNull(collection, variableName);
 
-            Require(collection.Any(), string.Format(Resource.Messages.Error_MustNotEmpty, variableName));
+            var message = string.Format(Resource.Messages.Error_MustNotEmpty,
+                                        variableName);
+            Require(collection.Any(), message);
         }
 
         /// <summary>
-        /// 参数名或变量名为<paramref name="variableName"/>的值（<paramref name="obj"/>）不能是空引用。
+        /// 参数名或变量名为<paramref name="variableName"/>的值（<paramref name="obj"/>）不
+        /// 能是空引用。
         /// </summary>
+        /// <exception cref="CheckException"></exception>
         public static void MustNotNull(object obj, string variableName)
         {
-            Require(obj != null, string.Format(Resource.Messages.Error_MustNotNull, variableName));
+            var message = string.Format(Resource.Messages.Error_MustNotNull,
+                                        variableName);
+            Require(obj != null, message);
         }
 
         /// <summary>
-        /// 参数名或变量名为<paramref name="variableName"/>的值（<paramref name="value"/>）必须在某个范围。
+        /// 参数名或变量名为<paramref name="variableName"/>的值（<paramref name="value"/>）
+        /// 必须在某个范围（[<paramref name="start"/>, <paramref name="end"/>]）。
         /// </summary>
+        /// <exception cref="CheckException"></exception>
         public static void MustBetween<T>(T value, string variableName, T start, T end)
             where T : IComparable<T>
         {
-            Require(value.CompareTo(start) >= 0 && value.CompareTo(end) <= 0, string.Format(Resource.Messages.Error_MustBetween, variableName, start, end));
+            var message = string.Format(Resource.Messages.Error_MustBetween,
+                                        variableName, start, end);
+            Require(value.CompareTo(start) >= 0 && value.CompareTo(end) <= 0, message);
         }
 
         /// <summary>
-        /// 参数名或变量名为<paramref name="variableName"/>的值（<paramref name="value"/>）必须大于指定的值。
+        /// 参数名或变量名为<paramref name="variableName"/>的值（<paramref name="value"/>）
+        /// 必须大于<paramref name="target"/>/>。
         /// </summary>
+        /// <exception cref="CheckException"></exception>
         public static void MustGreaterThan<T>(T value, string variableName, T target)
             where T : IComparable<T>
         {
-            Require(value.CompareTo(target) > 0, string.Format(Resource.Messages.Error_MustGreaterThan, variableName, target));
+            var message = string.Format(Resource.Messages.Error_MustGreaterThan,
+                                        variableName, target);
+            Require(value.CompareTo(target) > 0, message);
         }
 
         /// <summary>
-        /// 参数名或变量名为<paramref name="variableName"/>的值（<paramref name="value"/>）必须大于等于指定的值。
+        /// 参数名或变量名为<paramref name="variableName"/>的值（<paramref name="value"/>）
+        /// 必须大于等于<paramref name="target"/>。
         /// </summary>
-        public static void MustGreaterThanEqual<T>(T value, string variableName, T target)
+        /// <exception cref="CheckException"></exception>
+        public static void MustGreaterThanEqual<T>(T value, string variableName,
+                                                   T target)
             where T : IComparable<T>
         {
-            Require(value.CompareTo(target) >= 0, string.Format(Resource.Messages.Error_MustGreaterThanEqual, variableName, target));
+            var message = string.Format(Resource.Messages.Error_MustGreaterThanEqual,
+                                        variableName, target);
+            Require(value.CompareTo(target) >= 0, message);
         }
 
         /// <summary>
-        /// <paramref name="assertion"/>必须为true。
+        /// <paramref name="assertion"/>必须为<code>true</code>，否则抛出使用
+        /// <paramref name="message"/>实例化的<see cref="CheckException"/>。
         /// </summary>
+        /// <exception cref="CheckException"></exception>
         public static void Require(bool assertion, string message)
         {
             if (assertion)

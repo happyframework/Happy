@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Error_DirectoryMustExistxist" xml:space="preserve">
+    <value>变量“{0}”对应的路径“{0}”的目录必须存在</value>
+  </data>
   <data name="Error_MustBetween" xml:space="preserve">
     <value>变量“{0}”的值必须大于等于“{1}”且小于等于“{2}”</value>
   </data>
@@ -126,6 +129,9 @@
   <data name="Error_MustGreaterThanEqual" xml:space="preserve">
     <value>变量“{0}”的值必须大于等于“{1}”</value>
   </data>
+  <data name="Error_MustIsType" xml:space="preserve">
+    <value>变量“{0}”必须是类型“{1}”</value>
+  </data>
   <data name="Error_MustNotEmpty" xml:space="preserve">
     <value>集合变量“{0}” 的长度必须大于零</value>
   </data>
@@ -134,8 +140,5 @@
   </data>
   <data name="Error_MustNotNullAndNotWhiteSpace" xml:space="preserve">
     <value>字符串变量“{0}” 不能是空引用且不能是空白字符串</value>
-  </data>
-  <data name="Error_TheCorrespondingDirectoryMustExist" xml:space="preserve">
-    <value>变量“{0}”对应的路径“{0}”的目录必须存在</value>
   </data>
 </root>

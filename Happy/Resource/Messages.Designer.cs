@@ -61,6 +61,15 @@ namespace Happy.Resource {
         }
         
         /// <summary>
+        ///   查找类似 变量“{0}”对应的路径“{0}”的目录必须存在 的本地化字符串。
+        /// </summary>
+        internal static string Error_DirectoryMustExistxist {
+            get {
+                return ResourceManager.GetString("Error_DirectoryMustExistxist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 变量“{0}”的值必须大于等于“{1}”且小于等于“{2}” 的本地化字符串。
         /// </summary>
         internal static string Error_MustBetween {
@@ -88,6 +97,15 @@ namespace Happy.Resource {
         }
         
         /// <summary>
+        ///   查找类似 变量“{0}”必须是类型“{1}” 的本地化字符串。
+        /// </summary>
+        internal static string Error_MustIsType {
+            get {
+                return ResourceManager.GetString("Error_MustIsType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 集合变量“{0}” 的长度必须大于零 的本地化字符串。
         /// </summary>
         internal static string Error_MustNotEmpty {
@@ -111,15 +129,6 @@ namespace Happy.Resource {
         internal static string Error_MustNotNullAndNotWhiteSpace {
             get {
                 return ResourceManager.GetString("Error_MustNotNullAndNotWhiteSpace", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 变量“{0}”对应的路径“{0}”的目录必须存在 的本地化字符串。
-        /// </summary>
-        internal static string Error_TheCorrespondingDirectoryMustExist {
-            get {
-                return ResourceManager.GetString("Error_TheCorrespondingDirectoryMustExist", resourceCulture);
             }
         }
     }

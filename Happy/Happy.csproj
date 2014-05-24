@@ -51,6 +51,7 @@
     <Compile Include="Utils\ObjectUtil.cs" />
     <Compile Include="Utils\Reflection\AssemblyUtil.cs" />
     <Compile Include="Utils\Reflection\AttributeUtil.cs" />
+    <Compile Include="Utils\Reflection\MethodInfoUtil.cs" />
     <Compile Include="Utils\Reflection\TypeUtil.cs" />
     <Compile Include="Utils\AppDomainUtil.cs" />
     <Compile Include="Utils\StringUtil.cs" />
